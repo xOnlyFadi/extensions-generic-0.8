@@ -188,10 +188,10 @@ export class Parser {
             }
                 
         } else {
-            console.log('not null')
             for (const img of $('div.separator[data-index]').toArray()) {
                 const index = Number($(img).attr('data-index'))
                 const url = $('a', img)?.attr('href') ?? ''
+                
                 if (url !== '') {
                     pages.push({index, url:`https://intercept.me/${url}`})
                 }

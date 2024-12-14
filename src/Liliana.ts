@@ -20,7 +20,7 @@ import {
 import { Parser } from './LilianaParser'
 import {DefaultHomeSectionData, HomeSectionData, URLBuilder, createHomeSection, getFilterTagsBySection, getIncludedTagBySection} from './LilianaHelper'
 
-const BASE_VERSION = '1.0.0'
+const BASE_VERSION = '1.0.1'
 
 export const getExportVersion = (EXTENSION_VERSION: string): string => {
     return BASE_VERSION.split('.').map((x, index) => Number(x) + Number(EXTENSION_VERSION.split('.')[index])).join('.')
@@ -109,7 +109,8 @@ export abstract class Liliana implements SearchResultsProviding, MangaProviding,
                     request.headers = {
                         ...(request.headers ?? {}),
                         ...{
-                            'Accept': `image/avif,image/webp,*/*`
+                            'Accept': `image/avif,image/jxl,image/webp,image/png,image/svg+xml,image/*;q=0.8,*/*;q=0.5`,
+                            'referer': `${this.baseUrl}/`
                         }
                     }
                 } else {
